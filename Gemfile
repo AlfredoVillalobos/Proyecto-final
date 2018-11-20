@@ -7,6 +7,10 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'cancancan'
 gem 'dotenv-rails', group: [:development, :test]
+gem "omniauth"
+gem 'omniauth-google-oauth2'
+gem "omniauth-facebook"
+gem 'redis', '~> 3.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

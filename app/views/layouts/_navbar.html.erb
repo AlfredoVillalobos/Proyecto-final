@@ -15,7 +15,7 @@
         <a class="nav-link" href="#"></a>
       </li>
     </ul>
-    <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
+    <ul class='navbar-nav my-2 my-lg-0'>
       <li class="nav-item dropdown">
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item"><%= link_to 'Log In', new_user_session_path, class: 'dropdown-item' %></a>
@@ -27,7 +27,7 @@
           <%if user_signed_in? %>
             <%= current_user.name %>
           <% else %>
-            <%= "Menu" %>
+            <%= "" %>
           <% end %>
         </a>
       </li>

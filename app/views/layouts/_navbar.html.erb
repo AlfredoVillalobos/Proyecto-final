@@ -1,37 +1,41 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark", style='margin: auto'>
   <a class="navbar-brand text-white" href="#">
-  <img src="sprite.svg#si-glyph-network">"WordApp"
+  "WordApp"
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"></a>
-      </li>
-    </ul>
-    <ul class='navbar-nav my-2 my-lg-0'>
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"><%= link_to 'Log In', new_user_session_path, class: 'dropdown-item' %></a>
-          <a class="dropdown-item" href="#">Notice</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Help</a>
-        </div>
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%if user_signed_in? %>
-            <%= current_user.name %>
-          <% else %>
-            <%= "" %>
-          <% end %>
-        </a>
-      </li>
-    </ul>
+  <%if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
+        <li class="nav-item dropdown">
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"><%= current_user.name %></a>
+            <a class="dropdown-item"><%= link_to 'Close Session',  destroy_user_session_path, method: :delete, class: 'dropdown-item' %></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Help</a>
+          </div>
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </a>
+        </li>
+      </ul>
+  <% else %>
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
+          <li class="nav-item dropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item"><%= link_to 'Log In', new_user_session_path, class: 'dropdown-item' %></a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Help</a>
+            </div>
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </a>
+          </li>
+        </ul>
+  <% end %>
 
     <!-- search
     <form class="form-inline my-2 my-lg-0">

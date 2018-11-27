@@ -47,7 +47,7 @@ class OmniauthCallbacks::OmniauthCallbacksController < Devise::OmniauthCallbacks
     end
   end
 
-  def google_oauth2
+  def google
     @user = User.create_from_google_data(request.env['omniauth.auth'])
     if @user.persisted?
       sign_in_and_redirect @user

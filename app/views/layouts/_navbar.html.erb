@@ -2,32 +2,20 @@
   <a class="navbar-brand text-white" href="#">
   "WordApp"
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  
+  <% if current_user %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
-  <%if user_signed_in? %>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
-        <li class="nav-item dropdown">
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"><%= current_user.name %></a>
-            <a class="dropdown-item"><%= link_to 'Close Session',  destroy_user_session_path, method: :delete, class: 'dropdown-item' %></a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Help</a>
-          </div>
-          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </a>
-        </li>
-      </ul>
-  <% else %>
+    </button>
+    <%if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         </ul>
         <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
           <li class="nav-item dropdown">
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"><%= link_to 'Log In', new_user_session_path, class: 'dropdown-item' %></a>
+              <a class="dropdown-item"><%= current_user.name %></a>
+              <a class="dropdown-item"><%= link_to 'Close Session',  destroy_user_session_path, method: :delete, class: 'dropdown-item' %></a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Help</a>
             </div>
@@ -35,8 +23,22 @@
             </a>
           </li>
         </ul>
+    <% else %>
+          <ul class="navbar-nav mr-auto">
+          </ul>
+          <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
+            <li class="nav-item dropdown">
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item"><%= link_to 'Log In', new_user_session_path, class: 'dropdown-item' %></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Help</a>
+              </div>
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </a>
+            </li>
+          </ul>
+    <% end %> 
   <% end %>
-
     <!-- search
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -7,14 +7,17 @@
 
     <%= stylesheet_link_tag    'application', 'confirmation', 'session',  media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBwl5chO-5r9FaxNOIfltMfAnXhwwdTPH0" type="text/javascript"></script>
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
+    <!--
     <div class='container'> 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-    </div>
+    </div>-->
       <%= yield %>
   </body>
 </html>

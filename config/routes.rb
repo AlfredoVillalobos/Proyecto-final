@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
+  get 'geocoder/localposittion'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     omniauth_callbacks:  "users/omniauth_callbacks"
   }
-
+  #ActionCable
   mount ActionCable.server => '/cable'
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  
+  #Chat
+  resources :chat_rooms, only: [:new, :create, :show, :index, :destroy]
+  resources :users, only: [:index]
   root to: 'users#index'
+  
+  #Omniauth login with facebook and google
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
 end

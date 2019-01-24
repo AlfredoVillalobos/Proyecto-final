@@ -14,6 +14,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
+//= require underscore/underscore
+//= require gmaps/google
 //= require activestorage
 //= require turbolinks
 //= require cable

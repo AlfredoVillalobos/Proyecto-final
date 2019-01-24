@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
   def index
+    @chat_rooms = ChatRoom.all
+    @users = User.all
+    respond_to do |format|
+      format.html { render :index  }
+      format.json do
+        @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+          marker.lat user.latitude
+          marker.lng user.longitude
+        end
+        render json: @hash
+      end
+    end
   end
 
   def finish_signup

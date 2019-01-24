@@ -12,6 +12,9 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-facebook"
 gem 'redis', '~> 3.2'
 gem "font-awesome-rails"
+gem 'faker'
+gem 'gmaps4rails'
+gem 'geocoder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

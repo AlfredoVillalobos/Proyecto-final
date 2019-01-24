@@ -1,32 +1,33 @@
-<nav class="navbar">
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
   <a class="navbar-brand" href="#">
     <img src="<%= image_path 'logoAlfreBlanco.png'%>" alt="">
   </a>
-  
   <% if current_user %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <%if user_signed_in? %>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         </ul>
-        <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
+        <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 60px'>
           <li class="nav-item dropdown">
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name.capitalize%>
+              <%= fa_icon "chevron-circle-down" %>
+            </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"><%= current_user.name %></a>
+              <a class="dropdown-item"><%= link_to current_user.name.capitalize + " Perfil", '#', class:'dropdown-item' %></a>
               <a class="dropdown-item"><%= link_to 'Close Session',  destroy_user_session_path, method: :delete, class: 'dropdown-item' %></a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Help</a>
             </div>
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            </a>
           </li>
         </ul>
     <% else %>
           <ul class="navbar-nav mr-auto">
           </ul>
-          <ul class='navbar-nav my-2 my-lg-0', style='padding-right: 100px'>
+          <ul class='navbar-nav my-2 my-lg-0'>
             <li class="nav-item dropdown">
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item"><%= link_to 'Log In', new_user_session_path, class: 'dropdown-item' %></a>
@@ -37,12 +38,8 @@
               </a>
             </li>
           </ul>
+      </div>
     <% end %> 
   <% end %>
-    <!-- search
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
   </div>
 </nav>

@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    build_resource(configure_sign_up_params)
+    build_resource(sign_up_params)
 
     resource.save
     yield resource if block_given?
@@ -60,7 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -6,8 +6,11 @@ class User < ApplicationRecord
          :confirmable, :timeoutable, :omniauthable, 
          omniauth_providers: [:google_oauth2, :facebook]
   
+  geocoded_by :address
+  after_validation :geocode
 
   enum role: [:admin, :visit]
+  has_many :identities, dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
 
@@ -29,12 +32,14 @@ class User < ApplicationRecord
         if auth.provider == 'facebook'
           user = User.new(
             email: email ? email : "#{auth.uid}@change-me.com",
+            name: auth.info.first_name,
             password: password,
             password_confirmation: password
           )
-        elsif auth.provider == 'google'
+        elsif auth.provider == 'google_oauth2'
           user = User.new(
-            email: "#{auth.uid}@change-me.com",
+            email: email ? email : "#{auth.uid}@change-me.com",
+            name: auth.info.first_name, 
             password: password,
             password_confirmation: password
           )

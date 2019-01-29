@@ -1,32 +1,21 @@
 <div class="row justify-content-end">
   <div class='col-md-4'>
     <div class='container'>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-primary my-2 my-sm-0" type="submit"><%= fa_icon 'search' %></button>
-      </form>
-      <br>
-    </div>
-    <div class='container-fluid card'>
-      <div><h3>Chats</h3></div>    
-      <% @chat_rooms.each do |chatroom| %>
-      <div class='list-group'>
-        <div class='row' style='height:60px'>
-          <div class= 'col-md-10'>
-            <%= link_to "#{chatroom.title.capitalize}", chat_room_path(chatroom), class:'list-group-item list-group-item-action list-group-item-info' %>
-          </div>
-          <div class='col-md-1'>
-            <%= link_to chat_room_path(chatroom), method: :delete, class:'btn btn-danger' do %>
-              <%= fa_icon "trash" %>
-            <% end %>
-          </div>
-        </div>
+      <div class='col'>
+        <h4>Contactos</h4>
+        <form class="form-inline my-2 my-lg-0" id='search'>
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search"> 
+        </form>
       </div>
-      <% end %>
-    </div>
-      <div class='col-md-1'>
+      <div  id="users">
+        <ul class='list-contact'>
+          <%= render @users %>
+        </ul>
+      </div>
+      <div class='button-index-chat'>
         <%= link_to 'New Chat', chat_rooms_path, class:'btn btn-primary' %>
       </div>
+    </div>
   </div>
 
   
@@ -35,18 +24,22 @@
   </div>
 </div>
 
-
-
-  
-
-
-
-
-
-
-    
-
-
-
-
-
+<script>
+  $("[name=search]").keyup(function(event) {
+    $.ajax({
+    url:"<%= root_path %>",
+    type:'GET',
+    dataType:'script',
+    data: {search: $(this).val()}
+    })
+    .done(function(){
+        console.log("success");
+    })
+    .fail(function(){
+        console.log("error");
+    })
+    .always(function(){
+        console.log("complete");
+    });
+  })
+</script>

@@ -1,23 +1,25 @@
-<h1><%= @chat_room.title %></h1>
-<div class='col-md-3 ml-md-auto'>
-  <%= link_to 'volver al index', root_path %>
-</div>
-
-<div id="messages" data-chat-room-id="<%= @chat_room.id %>">
-  <%= render @chat_room.messages %>
-</div>
-
-<hr>
-
-<div class='col-md-6'>
-  <div class="form-group">
-    <%= form_for(@message, url: '#', remote: true) do |f| %>
-      <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
-        <%= f.label :body %>
-        <%= f.text_area :body, class: 'form-control' %>
-        <small class="text-muted">From 2 to 1000 characters</small>
+<div class='container-fluid-chat'>
+  <h1><%= @chat_room.title.capitalize  %></h1>
+  <div class='chat-btn-back'>
+    <%= link_to 'Volver al index', root_path, class:'btn btn-primary'%>
   </div>
-  
-    <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
-    <% end %>
+<div class='block-chat'>
+  <div class='block-messages' id="messages" data-chat-room-id="<%= @chat_room.id %>">
+    <%= render @chat_room.messages %>
+  </div>
+
+  <div class='chat-container-input'>
+    <div class='chat-input'>
+      <div class="form-group">
+        <%= form_for(@message, url: '#', remote: true) do |f| %>
+          <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
+            <%= f.label :'Escribe tu mensaje aquí', class: 'chat-label-message' %>
+            <%= f.text_area :body, class: 'form-control' %>
+            <small class="text-muted">From 2 to 1000 characters</small>
+      </div>
+
+        <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
+        <% end %>
+    </div>
+  </div>
 </div>

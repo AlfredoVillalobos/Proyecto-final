@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
   def index
     @chat_rooms = ChatRoom.all
-    @users = User.all
+    if params[:search].present?
+      @users = User.where('email like ?', "%#{params[:search]}%")
+
+    else 
+      @users = User.all
+    end
     respond_to do |format|
-      format.html { render :index  }
+      format.html { render :index }
+      format.js   { render :index }
       format.json do
         @hash = Gmaps4rails.build_markers(@users) do |user, marker|
           marker.lat user.latitude

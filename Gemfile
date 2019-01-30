@@ -15,6 +15,7 @@ gem "font-awesome-rails"
 gem 'faker'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'webpacker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

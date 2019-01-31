@@ -1,2 +1,9 @@
 es:
   hola: "Hola Mundo"
+  
+es:
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%b %d"
+      long: "%B %d, %Y"

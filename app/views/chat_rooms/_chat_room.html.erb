@@ -1,1 +1,16 @@
-<li><%= link_to "Enter #{chat_room.title}", chat_room_path(chat_room) %></li>
+<% @chat_rooms.each do |chatroom|%>
+  <div class='list-group'>
+    <div class='row' style='height:60px'>
+      <div class= 'col-md-8'>
+        <tr>
+          <td><%= link_to "#{chatroom.title.capitalize}", chat_room_path(chatroom), class: 'list-group-item list-group-item-primary' %></td>
+        </tr>
+      </div>
+      <div class='col-md-1'>
+        <%= link_to chat_room_path(chatroom), method: :delete, class:'btn btn-danger' do %>
+          <%= fa_icon "trash" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

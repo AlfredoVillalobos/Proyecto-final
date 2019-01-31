@@ -1,16 +1,13 @@
-<div class="message-table" style='height:80px'>
-  <div class="card-block">
-    <div class="row">
-      <div class="col-md-1">
-        <%= gravatar_for message.user %>
-      </div>
-      <div class="col-md-11">
-        <p class="card-text">
-          <span class="text-muted"><%= message.user.name %> at <%= message.timestamp %> says</span><br>
-          <%= message.body %>
-        </p>
-      </div>
+<div class="message-table">
+  <div class='scroll'>
+    <div class='gravatar'>
+      <%= gravatar_for message.user %>
     </div>
-
+    <div class="text-message">
+      <span class="text-muted"><%= message.user.name %> at <%= message.timestamp %> says</span><br>
+      <p>
+        <%= message.body %>
+      </p>
+    </div>
   </div>
 </div>

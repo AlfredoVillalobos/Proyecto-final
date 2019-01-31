@@ -2,7 +2,6 @@ var latlong = [-33.437846, -70.632737];
 // var handler;
 $(document).on('turbolinks:load', function() {
   initialize();
-  initMap();
 });
 
 function initialize() {

@@ -82,6 +82,4 @@ test:
 #
 production:
   <<: *default
-  database: wordapp_production
-  username: wordapp
-  password: <%= ENV['DATABASE_URL'] %>
+  database: <%= ENV['DATABASE_URL'] %>

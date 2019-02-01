@@ -2,6 +2,10 @@
   "name": "wordapp",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "3.5",
     "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }

@@ -28,7 +28,7 @@ class ChatRoomsController < ApplicationController
   def destroy
     @chat_room = ChatRoom.find(params[:id])
     @chat_room.destroy
-    redirect_to root_path
+    redirect_to chat_rooms_path
   end
     
   private
@@ -36,7 +36,4 @@ class ChatRoomsController < ApplicationController
   def chat_room_params
     params.require(:chat_room).permit(:title)
   end
-
-
-
 end

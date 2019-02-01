@@ -1,3 +1,56 @@
 // Place all the styles related to the ChatRooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-fluid-chat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chat-btn-back {
+    margin: 20px;
+}
+
+.block-chat {
+    width: 50%;
+}
+
+.block-messages {
+  background-color: #fff;
+  box-shadow: 0 0 0 5px #f4f2ed inset;
+  box-sizing: border-box;
+  max-height: 40%;
+  overflow-y: scroll;
+  padding: 20px;
+  margin: 0px;
+  height: 400px;
+}
+
+.chat-container-input {
+    margin: 20px;
+}
+
+.chat-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    width: 100%;
+
+    #new_message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    textarea{
+        width: 50%;
+    }
+
+    .chat-label-message {
+        font-family: 'Ruluko' cursive;
+    }
+}

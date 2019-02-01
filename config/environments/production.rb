@@ -94,12 +94,12 @@ Rails.application.configure do
   config.eager_load = false
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { http: ENV['URL_HEROKU'] }
+  config.action_mailer.default_url_options = { host: 'https://mighty-retreat-48077.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name:      ENV['EMAIL_USERNAME'],
     password:       ENV['EMAIL_PASSWORD'],
-    domain:         ENV['URL_HEROKU'],
+    domain:         'https://mighty-retreat-48077.herokuapp.com/ ',
     address:       'smtp.gmail.com',
     port:          '587',
     authentication: :plain,

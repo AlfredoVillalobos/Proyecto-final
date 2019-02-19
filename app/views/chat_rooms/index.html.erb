@@ -1,11 +1,11 @@
 <h1>Chat rooms</h1>
-
-<p class="lead "><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
-
-
+<div>
+  <p class="lead "><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
+  <p class='lead'><%= link_to 'Volver al index', root_path, class:'btn btn-primary' %></p>
+</div>
 <div class='row'>
   <div class='col-md-6'>
-    <div class='container-fluid card'>
+    <div class='container-fluid'>
       <%= render 'chat_room' %>
     </div>
   </div>

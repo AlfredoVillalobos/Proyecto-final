@@ -1,34 +1,40 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="registration-container">
+  <div class="registration-subcontainer-background">
+    <h2 class='registration-title'>Sign up</h2>
+    <hr class='registration-line-title'/>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
   
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+      <div class="registration-container-form-email">
+        <%= f.label :name, class: "registration-title-email" %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="registration-container-form-email">
+        <%= f.label :email, class: "registration-title-email" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="registration-container-form-password">
+        <%= f.label :password, class: "registration-title-password" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="registration-container-form-password">
+        <%= f.label :password_confirmation, class: "registration-title-password" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <div class="registration-container-btn-registration">
+        <%= f.submit "Sign up", class: "btn-registration" %>
+      </div>
+      <div class="registration-container-btn-registration">
+        <%= link_to ' Ir sign in', user_session_path, class: "btn-registration" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
